@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thiệp mời cưới</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--bur:#8f1d3f;--burD:#7b1634;--gold:#e8c872;--ink:#2a1a1f;--panel:#fbf7f4;--line:#d9cfc9;--bg1:#7a655c;--bg2:#5e4c45;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f3e9e6;--panel:#2b2023;--line:#4b3b3f;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#f3e9e6;--panel:#2b2023;--line:#4b3b3f;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:radial-gradient(120% 90% at 50% 30%,var(--bg1),var(--bg2));font-family:Montserrat,system-ui,sans-serif;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:64px 0 14px}
+.stage{position:relative;width:min(94vw,calc((100dvh - 190px)/1.48),560px);aspect-ratio:100/148;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.env{position:absolute;inset:0;background:var(--burD);border-radius:2px;box-shadow:0 18px 40px rgba(0,0,0,.45);z-index:1;transition:transform .9s ease,opacity .8s ease}
+.card{position:absolute;left:3%;top:1.6%;width:94%;aspect-ratio:2/3;z-index:2;container-type:inline-size;transition:transform 1s cubic-bezier(.3,.7,.2,1)}
+.envf{position:absolute;inset:0;z-index:3;container-type:inline-size;transition:transform .9s ease,opacity .8s ease;pointer-events:none}
+.envf svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.xi{position:absolute;left:61%;top:62%;font:700 24cqw/1 "Noto Serif SC","Songti SC",serif;color:#8a1a3b;text-shadow:1px 1px 1px rgba(0,0,0,.35),-1px -1px 1px rgba(255,255,255,.14)}
+.etxt{position:absolute;right:11%;text-align:right;bottom:calc(8.6% + 7.6cqw);font:600 3.4cqw/1.2 Montserrat;white-space:nowrap;letter-spacing:.06em;color:var(--gold);text-shadow:0 0 1px rgba(255,220,130,.6)}
+.ename{position:absolute;left:10%;right:11%;bottom:8.6%;text-align:center;font:6cqw/1 "Great Vibes",cursive;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eline{position:absolute;left:10%;right:11%;top:91.5%;height:1.2px;background:var(--gold)}
+/* trạng thái */
+.stage.pull .card{transform:translateY(-20%)}
+.stage.free .card{transform:none;cursor:pointer}
+.stage.free .env,.stage.free .envf{transform:translateY(55%);opacity:0}
+.stage:not(.pull):hover .card{transform:translateY(-3%)}
+.inner{position:absolute;inset:0;transform-style:preserve-3d;transform:none;transition:transform .9s cubic-bezier(.4,.1,.2,1)}
+.stage.flipped .inner{transform:perspective(1500px) rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(135deg,#f6f5f1,#e8eae5 48%,#f5f4ef);box-shadow:0 10px 30px rgba(0,0,0,.35);color:var(--bur);overflow:hidden}
+.face::before,.face::after{content:"";position:absolute;pointer-events:none}
+.face::before{inset:4.2%;border:1px solid rgba(110,90,95,.28);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75),inset 0 0 0 3px rgba(0,0,0,.05)}
+.face::after{inset:5.6%;border:1.5px dotted rgba(0,0,0,.16)}
+.back{transform:rotateY(180deg)}
+.vn{position:absolute;writing-mode:vertical-lr;text-orientation:upright;font:500 4.4cqw/1 Montserrat;letter-spacing:.4em;text-transform:uppercase}
+.fb{position:absolute;left:0;right:0;top:44%;padding:0 8% 0 10%;text-align:right;text-transform:uppercase;color:#5a2a36;font-size:3cqw;line-height:1.5;font-weight:500;letter-spacing:.03em}
+.fb .inv{font-size:3.2cqw;letter-spacing:.06em;margin-bottom:1cqw}
+.fb .nm{font:6.2cqw/1.2 "Great Vibes",cursive;color:var(--bur);text-transform:none;letter-spacing:0;border-bottom:1.5px dotted rgba(0,0,0,.4);margin:0 0 2.6cqw 14%;padding:2cqw 0 0;line-height:1;min-height:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb .dt{font-weight:600;font-size:3.9cqw;color:var(--bur);margin:1cqw 0 .4cqw;letter-spacing:.03em}
+.fb .lu{text-transform:none;font-size:2.9cqw;letter-spacing:.02em}
+.fb .vn2{font:10cqw/1.15 "Great Vibes",cursive;color:var(--bur);text-transform:none;letter-spacing:0;margin:2.5cqw 0 1cqw}
+.fb .ad{text-transform:none;font-size:3cqw;letter-spacing:.01em;margin-bottom:2cqw}
+.fb .ad2{text-transform:none;font-size:3cqw;letter-spacing:.01em}
+.bk{position:absolute;inset:7% 8%;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;text-align:center}
+.mono{display:flex;align-items:center;justify-content:center;gap:2.5cqw;height:14cqw;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:12cqw;line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.mono span:nth-child(2){font-size:7cqw;font-weight:400}
+.par{display:flex;gap:6cqw;width:100%;justify-content:center;font-size:2.5cqw;line-height:1.5;color:#5a2a36}
+.par div{flex:1}.par small{display:block;font-size:2.4cqw;color:#6e5a5f;margin-bottom:.5cqw}.par b{display:block;font-weight:600;text-transform:uppercase;letter-spacing:0}
+.par i{display:block;font-style:normal;color:#6e5a5f;font-size:2.3cqw;margin-top:.6cqw}
+.t1{font-size:3.1cqw;letter-spacing:.05em;line-height:1.6;text-transform:uppercase;color:#5a2a36}
+.sc{font:8.2cqw/1 "Great Vibes",cursive}
+.big{font:600 8cqw/1.05 "Cormorant Garamond",serif;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+.rl{font-size:2.6cqw;color:#5a2a36;margin-top:.5cqw}
+.gr{display:flex;flex-direction:column;align-items:center}
+.t2{font-size:3.1cqw;text-transform:uppercase;letter-spacing:.05em;color:#5a2a36}
+.t3{font-weight:600;font-size:3.5cqw;text-transform:uppercase;letter-spacing:.05em;margin:1cqw 0 .8cqw}
+.t4{font-size:2.9cqw;color:#5a2a36}
+.hint{margin:0;color:rgba(255,255,255,.88);font-size:14px;text-align:center;min-height:20px;padding:0 16px}
+.btns{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 12px;background:linear-gradient(rgba(30,18,22,.75) 65%,transparent)}
+button{font:500 14px Montserrat,sans-serif;border:1px solid rgba(255,255,255,.7);background:rgba(40,22,28,.9);color:#fff;border-radius:999px;padding:10px 18px;cursor:pointer}
+button:hover{background:rgba(0,0,0,.32)}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button[hidden]{display:none}
+.panel{position:fixed;left:0;right:0;top:0;max-height:62dvh;overflow:auto;background:var(--panel);color:var(--ink);border-radius:0 0 16px 16px;box-shadow:0 10px 40px rgba(0,0,0,.4);padding:calc(66px + env(safe-area-inset-top,0px)) 16px 18px;z-index:40;transform:translateY(-110%);visibility:hidden;transition:transform .35s ease,visibility 0s .35s}
+.panel.on{transform:none;visibility:visible;transition:transform .35s ease}
+.panel h2{margin:0 0 4px;font:600 16px Montserrat}.panel p{margin:0 0 12px;font-size:13px;opacity:.75}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px 14px;max-width:900px;margin:0 auto}
+.grid h3{grid-column:1/-1;margin:8px 0 0;font:600 13px Montserrat;color:var(--bur);border-bottom:1px solid var(--line);padding-bottom:4px}
+@media (prefers-color-scheme:dark){.grid h3{color:#e8a5b6}}
+label{display:block;font-size:12px;opacity:.85}
+input{width:100%;margin-top:3px;font:14px Montserrat,sans-serif;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink)}
+.pbtn{display:flex;justify-content:center;margin-top:14px}.pbtn button{border-color:var(--line);color:var(--ink);background:transparent}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stage" id="stage" role="button" tabindex="0" aria-label="Phong bì thiệp mời">
+    <div class="env"></div>
+    <div class="card"><div class="inner" id="inner">
+      <section class="face front">
+        <div class="vn" style="left:15%;top:7.5%" data-k="groomName"></div>
+        <div class="vn" style="left:22.5%;top:13%" data-k="brideName"></div>
+        <div class="fb">
+          <div class="inv">Trân trọng kính mời</div>
+          <div class="nm" data-k="guest"></div>
+          <div>Tới dự buổi tiệc mừng lễ thành hôn</div>
+          <div>Chung vui cùng gia đình chúng tôi</div>
+          <div data-k="partyTime"></div>
+          <div class="dt" data-k="partyDate"></div>
+          <div class="lu" data-k="partyLunar"></div>
+          <div class="vn2" data-k="venue"></div>
+          <div class="ad" data-k="venueAddr"></div>
+          <div class="ad2">Rất hân hạnh được đón tiếp!</div>
+        </div>
+      </section>
+      <section class="face back">
+        <div class="bk">
+          <div class="mono" id="mono"><span></span><span>&amp;</span><span></span></div>
+          <div class="par">
+            <div><small>Nhà Trai</small><b data-k="gP1"></b><b data-k="gP2"></b><i data-k="gAddr"></i></div>
+            <div><small>Nhà Gái</small><b data-k="bP1"></b><b data-k="bP2"></b><i data-k="bAddr"></i></div>
+          </div>
+          <div class="t1">Trân trọng kính mời quý khách<br>đến dự lễ thành hôn của hai con chúng tôi</div>
+          <div class="gr"><div class="big"><span data-k="groomSur"></span> <span data-k="groomName"></span></div><div class="rl" data-k="groomRole"></div></div>
+          <div class="gr"><div class="big"><span data-k="brideSur"></span> <span data-k="brideName"></span></div><div class="rl" data-k="brideRole"></div></div>
+          <div class="gr"><div class="t2" data-k="homeTitle"></div><div class="t3" data-k="homeTime"></div><div class="t4" data-k="homeLunar"></div></div>
+        </div>
+      </section>
+    </div></div>
+    <div class="envf">
+      <svg viewBox="0 0 100 148" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="#8f1d3f" fill-rule="evenodd" d="M0 0H100V148H0Z M3 3H81C78 8 70 11 62 18C54 26 50 38 40 45C36 52 38 60 30 63C24 61 20 64 14 65C10 64 6 66 3 68Z"/>
+        <g id="deco" fill="none" stroke="#e8c872" stroke-width=".35" stroke-linecap="round" stroke-linejoin="round"></g>
+      </svg>
+      <div class="xi">囍</div>
+      <div class="etxt">TRÂN TRỌNG KÍNH MỜI</div>
+      <div class="ename" data-k="guest"></div>
+      <div class="eline"></div>
+    </div>
+  </div>
+  <p class="hint" id="hint">Chạm vào phong bì để rút thiệp</p>
+  <div class="btns">
+    <button id="bFlip" hidden>Lật thiệp</button>
+    <button id="bClose" hidden>Cất thiệp vào phong bì</button>
+    <button id="bEdit">Chỉnh sửa thông tin</button>
+  </div>
+</div>
+<aside class="panel" id="panel" aria-label="Chỉnh sửa thông tin thiệp">
+  <h2>Chỉnh sửa thông tin thiệp</h2>
+  <p>Gõ vào ô nào, thiệp thay đổi ngay. Thông tin được lưu trên trình duyệt này.</p>
+  <div class="grid" id="grid"></div>
+  <div class="pbtn"><button id="bDone">Xong</button></div>
+</aside>
+<script>
+var KEY="thiep-cuoi-v1";
+var D={guest:"Tên khách mời",groomSur:"Nguyễn",groomName:"Tuấn Anh",groomRole:"Trưởng Nam",brideSur:"Trần",brideName:"Mai Phương",brideRole:"Út Nữ",
+gP1:"Ông Nguyễn Hoàng Đức",gP2:"Bà Nguyễn Thị Ngọc Anh",gAddr:"Phường Thành Vinh - Nghệ An",
+bP1:"Ông Trần Văn Thiêm",bP2:"Bà Trần Thị Lan Anh",bAddr:"Phường Vinh Lộc - Nghệ An",
+homeTitle:"Hôn lễ được cử hành tại tư gia",homeTime:"09H00 | Chủ nhật | Ngày 11.10.2026",homeLunar:"Tức ngày 02 tháng 09 năm Bính Ngọ",
+partyTime:"Vào lúc 17H30",partyDate:"Thứ bảy | Ngày 10 tháng 10 năm 2026",partyLunar:"Tức ngày 01 tháng 09 năm Bính Ngọ",
+venue:"Sheraton Vinh",venueAddr:"Đ. Quang Trung - Phường Thành Vinh - Tỉnh Nghệ An"};
+try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)for(var k in s)if(k in D)D[k]=s[k]}catch(e){}
+var F=[["Khách mời",[["guest","Tên khách mời (hiện trên phong bì và thiệp)"]]],
+["Chú rể",[["groomSur","Họ (chữ viết tay)"],["groomName","Tên"],["groomRole","Thứ bậc (vd: Trưởng Nam)"]]],
+["Cô dâu",[["brideSur","Họ (chữ viết tay)"],["brideName","Tên"],["brideRole","Thứ bậc (vd: Út Nữ)"]]],
+["Nhà trai",[["gP1","Bố"],["gP2","Mẹ"],["gAddr","Địa chỉ"]]],
+["Nhà gái",[["bP1","Bố"],["bP2","Mẹ"],["bAddr","Địa chỉ"]]],
+["Hôn lễ tại tư gia",[["homeTitle","Tiêu đề"],["homeTime","Giờ | thứ | ngày"],["homeLunar","Ngày âm lịch"]]],
+["Tiệc mừng",[["partyTime","Giờ"],["partyDate","Thứ | ngày"],["partyLunar","Ngày âm lịch"],["venue","Tên nhà hàng"],["venueAddr","Địa chỉ nhà hàng"]]]];
+var $=function(i){return document.getElementById(i)};
+function render(){
+  document.querySelectorAll("[data-k]").forEach(function(e){e.textContent=D[e.dataset.k]});
+  var g=function(n){var w=n.trim().split(/\s+/);return (w[w.length-1]||"?").charAt(0).toUpperCase()};
+  var m=$("mono").children;m[0].textContent=g(D.brideName);m[2].textContent=g(D.groomName);
+  try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}
+}
+/* hoa mộc lan vàng trên phong bì */
+function petal(a,L){return '<path transform="rotate('+a+')" fill="#8f1d3f" d="M0 0C-'+(L*.42)+' -'+(L*.15)+' -'+(L*.55)+' -'+(L*.72)+' -1 -'+L+'C'+(L*.55)+' -'+(L*.72)+' '+(L*.42)+' -'+(L*.15)+' 0 0Z"/><path transform="rotate('+a+')" d="M0 -3V-'+(L*.7)+'"/>'}
+function flower(x,y,s,r){var h='<g transform="translate('+x+' '+y+') rotate('+r+') scale('+s+')">';
+  [-62,62,0].forEach(function(a){h+=petal(a,22)});[-30,30].forEach(function(a){h+=petal(a,19)});
+  for(var i=-6;i<=6;i++)h+='<path transform="rotate('+(i*11)+')" d="M0 -3L0 -12"/><circle transform="rotate('+(i*11)+')" cx="0" cy="-13" r=".7"/>';
+  return h+'</g>'}
+function bud(x,y,s,r){return '<g transform="translate('+x+' '+y+') rotate('+r+') scale('+s+')"><path fill="#8f1d3f" d="M0 0C-9-4-10-16 0-24C10-16 9-4 0 0Z"/><path d="M0 -2C-3 -9-3 -15 0-22M0 -2C3 -9 3 -15 0-22"/></g>'}
+function leaf(x,y,r,s){return '<g transform="translate('+x+' '+y+') rotate('+r+') scale('+s+')"><path fill="#8f1d3f" d="M0 0C6-8 17-8 24 0C17 8 6 8 0 0Z"/><path d="M0 0L22 0M6 0L11 -4M6 0L11 4M12 0L17 -3M12 0L17 3"/></g>'}
+$("deco").innerHTML='<path stroke-width=".6" d="M4 106C22 100 34 94 41 82C48 70 62 64 70 54C76 46 78 38 79 24"/><path stroke-width=".4" d="M62 62C60 56 58 52 56 48M72 48C76 40 82 34 88 30"/>'
+ +leaf(6,92,-35,.7)+leaf(15,90,-75,.65)+leaf(22,100,40,.8)+leaf(34,96,70,.85)+leaf(62,72,25,.75)+leaf(86,44,-35,.6)+leaf(71,40,-120,.5)+leaf(52,68,95,.55)
+ +flower(38,86,.78,-12)+flower(72,52,.72,-4)+bud(53,62,.5,18)+bud(64,30,.45,-5)+bud(88,29,.4,12)+bud(80,22,.35,5);
+/* bảng chỉnh sửa */
+var grid=$("grid");
+F.forEach(function(sec){var h=document.createElement("h3");h.textContent=sec[0];grid.appendChild(h);
+  sec[1].forEach(function(f){var l=document.createElement("label");l.textContent=f[1];var i=document.createElement("input");i.value=D[f[0]];
+    i.addEventListener("input",function(){D[f[0]]=i.value;render()});l.appendChild(i);grid.appendChild(l)})});
+/* tương tác */
+var st=$("stage"),hint=$("hint"),busy=false;
+function btns(){var f=st.classList.contains("free");$("bFlip").hidden=!f;$("bClose").hidden=!f}
+function openIt(){if(busy||st.classList.contains("pull"))return;busy=true;st.classList.add("pull");hint.textContent="Đang rút thiệp ra…";
+  setTimeout(function(){st.classList.add("free");btns();hint.textContent="Chạm vào thiệp để lật mặt sau";busy=false},900)}
+function flip(){if(!st.classList.contains("free"))return;st.classList.toggle("flipped");
+  hint.textContent=st.classList.contains("flipped")?"Mặt sau: thông tin hai họ":"Mặt trước: lời mời"}
+function closeIt(){busy=true;st.classList.remove("flipped");
+  setTimeout(function(){st.classList.remove("free");btns();hint.textContent="Đang cất thiệp…";
+    setTimeout(function(){st.classList.remove("pull");hint.textContent="Chạm vào phong bì để rút thiệp";busy=false},900)},700)}
+st.addEventListener("click",function(){st.classList.contains("free")?flip():openIt()});
+st.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();st.classList.contains("free")?flip():openIt()}});
+$("bFlip").onclick=flip;$("bClose").onclick=closeIt;
+$("bEdit").onclick=function(){var on=$("panel").classList.toggle("on");this.textContent=on?"Đóng chỉnh sửa":"Chỉnh sửa thông tin"};$("bDone").onclick=function(){$("panel").classList.remove("on");$("bEdit").textContent="Chỉnh sửa thông tin"};
+render();
+</script>
+</body>
+</html>
